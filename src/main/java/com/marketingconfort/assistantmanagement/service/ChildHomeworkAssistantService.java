@@ -1,24 +1,24 @@
 package com.marketingconfort.assistantmanagement.service;
 
-import com.marketingconfort.brainboost_common.assistant_devoir.models.AssistantDevoirEnfant;
-import com.marketingconfort.brainboost_common.assistant_devoir.enums.NiveauEducatif;
+import com.marketingconfort.brainboost_common.assistant_devoir.models.ChildHomeworkAssistant;
+import com.marketingconfort.brainboost_common.assistant_devoir.enums.EducationLevel;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-public interface AssistantDevoirEnfantService {
+public interface ChildHomeworkAssistantService {
 
     // CRUD de base
-    AssistantDevoirEnfant createAssistant(AssistantDevoirEnfant assistant);
-    AssistantDevoirEnfant updateAssistant(Long assistantId, AssistantDevoirEnfant assistant);
-    AssistantDevoirEnfant getAssistantDetails(Long assistantId);
+    ChildHomeworkAssistant createAssistant(ChildHomeworkAssistant assistant);
+    ChildHomeworkAssistant updateAssistant(Long assistantId, ChildHomeworkAssistant assistant);
+    ChildHomeworkAssistant getAssistantDetails(Long assistantId);
     void deleteAssistant(Long assistantId);
 
     // Listing et Recherche
-    Page<AssistantDevoirEnfant> listAssistants(int page, int size);
-    Page<AssistantDevoirEnfant> searchAssistants(String keyword, Pageable pageable);
+    Page<ChildHomeworkAssistant> listAssistants(int page, int size);
+    Page<ChildHomeworkAssistant> searchAssistants(String keyword, Pageable pageable);
 
     // Fonctionnalités Métier
     String greetUser(Long userId, String educationalLevel);

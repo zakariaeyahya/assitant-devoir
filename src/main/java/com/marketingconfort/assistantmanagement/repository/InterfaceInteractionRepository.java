@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
-public interface InteractionDevoirRepository extends JpaRepository<InteractionDevoir, Long> {
+public interface InterfaceInteractionRepository extends JpaRepository<InteractionDevoir, Long> {
     List<InteractionDevoir> findByUserIdOrderByInteractionDateDesc(Long userId);
     List<InteractionDevoir> findByAssistantIdAndInteractionDateBetween(Long assistantId, LocalDateTime startDate, LocalDateTime endDate);
     List<InteractionDevoir> findByInteractionTypeAndIsRedirected(String interactionType, boolean isRedirected);

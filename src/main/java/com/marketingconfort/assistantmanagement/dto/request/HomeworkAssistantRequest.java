@@ -1,6 +1,6 @@
 package com.marketingconfort.assistantmanagement.dto.request;
 
-import com.marketingconfort.brainboost_common.assistant_devoir.enums.NiveauEducatif;
+import com.marketingconfort.brainboost_common.assistant_devoir.enums.EducationLevel;
 import com.marketingconfort.brainboost_common.assistant_devoir.enums.AssistantStatus;
 import lombok.Data;
 
@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Data
-public class AssistantDevoirRequest {
+public class HomeworkAssistantRequest {
 
     @NotNull(message = "L'ID utilisateur est requis")
     private Long userId;
@@ -20,7 +20,7 @@ public class AssistantDevoirRequest {
     private AssistantStatus status = AssistantStatus.ACTIVE;
 
     @NotNull(message = "Le niveau éducatif est requis")
-    private NiveauEducatif educationLevel;
+    private EducationLevel educationLevel;
 
     private Boolean enabled = true;
 

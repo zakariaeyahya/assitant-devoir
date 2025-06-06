@@ -1,8 +1,8 @@
 package com.marketingconfort.assistantmanagement.service.impl;
 
-import com.marketingconfort.assistantmanagement.repository.AssistantDevoirEnfantRepository;
-import com.marketingconfort.assistantmanagement.service.AssistantDevoirEnfantService;
-import com.marketingconfort.brainboost_common.assistant_devoir.models.AssistantDevoirEnfant;
+import com.marketingconfort.assistantmanagement.repository.ChildHomeworkAssistantRepository;
+import com.marketingconfort.assistantmanagement.service.ChildHomeworkAssistantService;
+import com.marketingconfort.brainboost_common.assistant_devoir.models.ChildHomeworkAssistant;
 import com.marketingconfort.brainboost_common.assistant_devoir.enums.AssistantStatus;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,12 +23,12 @@ import java.util.UUID;
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
-public class AssistantDevoirEnfantServiceImpl implements AssistantDevoirEnfantService {
+public class ChildHomeworkAssistantServiceImpl implements ChildHomeworkAssistantService {
 
-    private final AssistantDevoirEnfantRepository assistantRepository;
+    private final ChildHomeworkAssistantRepository assistantRepository;
 
     @Override
-    public AssistantDevoirEnfant createAssistant(AssistantDevoirEnfant assistant) {
+    public ChildHomeworkAssistant createAssistant(ChildHomeworkAssistant assistant) {
         log.info("Création d'un nouvel assistant pour l'utilisateur: {}", assistant.getUserId());
 
         // Validation simple
@@ -46,10 +46,10 @@ public class AssistantDevoirEnfantServiceImpl implements AssistantDevoirEnfantSe
     }
 
     @Override
-    public AssistantDevoirEnfant updateAssistant(Long assistantId, AssistantDevoirEnfant assistant) {
+    public ChildHomeworkAssistant updateAssistant(Long assistantId, ChildHomeworkAssistant assistant) {
         log.info("Mise à jour de l'assistant: {}", assistantId);
 
-        AssistantDevoirEnfant existing = getAssistantDetails(assistantId);
+        ChildHomeworkAssistant existing = getAssistantDetails(assistantId);
 
         // Mise à jour des champs
         existing.setType(assistant.getType());
@@ -62,7 +62,7 @@ public class AssistantDevoirEnfantServiceImpl implements AssistantDevoirEnfantSe
     }
 
     @Override
-    public AssistantDevoirEnfant getAssistantDetails(Long assistantId) {
+    public ChildHomeworkAssistant getAssistantDetails(Long assistantId) {
         return assistantRepository.findById(assistantId)
                 .orElseThrow(() -> new RuntimeException("Assistant non trouvé: " + assistantId));
     }
@@ -71,18 +71,18 @@ public class AssistantDevoirEnfantServiceImpl implements AssistantDevoirEnfantSe
     public void deleteAssistant(Long assistantId) {
         log.info("Suppression de l'assistant: {}", assistantId);
 
-        AssistantDevoirEnfant assistant = getAssistantDetails(assistantId);
+        ChildHomeworkAssistant assistant = getAssistantDetails(assistantId);
         assistantRepository.delete(assistant);
     }
 
     @Override
-    public Page<AssistantDevoirEnfant> listAssistants(int page, int size) {
+    public Page<ChildHomeworkAssistant> listAssistants(int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("createdAt").descending());
         return assistantRepository.findAll(pageable);
     }
 
     @Override
-    public Page<AssistantDevoirEnfant> searchAssistants(String keyword, Pageable pageable) {
+    public Page<ChildHomeworkAssistant> searchAssistants(String keyword, Pageable pageable) {
         // Recherche simple (à améliorer avec critères)
         return assistantRepository.findAll(pageable);
     }

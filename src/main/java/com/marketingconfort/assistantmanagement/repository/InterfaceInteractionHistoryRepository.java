@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface HistoriqueInteractionsDevoirRepository extends JpaRepository<HistoriqueInteractionsDevoir, Long> {
+public interface InterfaceInteractionHistoryRepository extends JpaRepository<HistoriqueInteractionsDevoir, Long> {
     Optional<HistoriqueInteractionsDevoir> findByUserId(Long userId);
     List<HistoriqueInteractionsDevoir> findByCreatedAtAfter(LocalDateTime date);
 }

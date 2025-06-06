@@ -1,6 +1,6 @@
 package com.marketingconfort.assistantmanagement.dto.response;
 
-import com.marketingconfort.brainboost_common.assistant_devoir.enums.NiveauEducatif;
+import com.marketingconfort.brainboost_common.assistant_devoir.enums.EducationLevel;
 import com.marketingconfort.brainboost_common.assistant_devoir.enums.AssistantStatus;
 import lombok.Data;
 
@@ -8,13 +8,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-public class AssistantDevoirResponse {
+public class HomeworkAssistantResponse {
 
     private Long id;
     private Long userId;
     private String type;
     private AssistantStatus status;
-    private NiveauEducatif educationLevel;
+    private EducationLevel educationLevel;
     private Boolean enabled;
     private List<String> supportedInputTypes;
 

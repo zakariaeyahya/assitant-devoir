@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface InterfaceDevoirEnfantRepository extends JpaRepository<InterfaceDevoirEnfant, Long> {
+public interface ChildInterfaceRepository extends JpaRepository<InterfaceDevoirEnfant, Long> {
     Optional<InterfaceDevoirEnfant> findByAssistantId(Long assistantId);
     List<InterfaceDevoirEnfant> findByWelcomeMessageContaining(String keyword);
 }
