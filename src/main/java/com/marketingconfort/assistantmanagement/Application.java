@@ -15,20 +15,15 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {
 		"com.marketingconfort.starter.core.models",
 		"com.marketingconfort.assistantmanagement.repository"
-
-
 })
 @EntityScan(basePackages = {
 		"com.marketingconfort.starter.core",
-		"com.marketingconfort.brainboost_common.assistantmanagement.models"
-		
+		"com.marketingconfort.brainboost_common.assistantmanagement.models",
+		"com.marketingconfort.brainboost_common.assistant_devoir.models"  // AJOUTER CETTE LIGNE
 })
 public class Application {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
 	}
-
-
-
 }

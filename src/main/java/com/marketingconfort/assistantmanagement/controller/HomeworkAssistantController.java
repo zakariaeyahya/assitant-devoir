@@ -1,7 +1,7 @@
 package com.marketingconfort.assistantmanagement.controller;
 
-import com.marketingconfort.assistantmanagement.dto.request.AssistantDevoirRequest;
-import com.marketingconfort.assistantmanagement.dto.response.AssistantDevoirResponse;
+import com.marketingconfort.assistantmanagement.dto.request.HomeworkAssistantRequest;
+import com.marketingconfort.assistantmanagement.dto.response.HomeworkAssistantResponse;
 import com.marketingconfort.assistantmanagement.service.ChildHomeworkAssistantService;
 import com.marketingconfort.brainboost_common.assistant_devoir.models.ChildHomeworkAssistant;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class HomeworkAssistantController {
     private final ChildHomeworkAssistantService assistantService;
 
     @PostMapping
-    public ResponseEntity<AssistantDevoirResponse> createAssistant(@Valid @RequestBody AssistantDevoirRequest request) {
+    public ResponseEntity<HomeworkAssistantResponse> createAssistant(@Valid @RequestBody HomeworkAssistantRequest request) {
         log.info("Création d'un assistant pour l'utilisateur: {}", request.getUserId());
 
         ChildHomeworkAssistant assistant = convertToEntity(request);
@@ -37,9 +37,9 @@ public class HomeworkAssistantController {
     }
 
     @PutMapping("/{assistantId}")
-    public ResponseEntity<AssistantDevoirResponse> updateAssistant(
+    public ResponseEntity<HomeworkAssistantResponse> updateAssistant(
             @PathVariable Long assistantId,
-            @Valid @RequestBody AssistantDevoirRequest request) {
+            @Valid @RequestBody HomeworkAssistantRequest request) {
 
         log.info("Mise à jour de l'assistant: {}", assistantId);
 
@@ -50,7 +50,7 @@ public class HomeworkAssistantController {
     }
 
     @GetMapping("/{assistantId}")
-    public ResponseEntity<AssistantDevoirResponse> getAssistant(@PathVariable Long assistantId) {
+    public ResponseEntity<HomeworkAssistantResponse> getAssistant(@PathVariable Long assistantId) {
         log.info("Récupération de l'assistant: {}", assistantId);
 
         ChildHomeworkAssistant assistant = assistantService.getAssistantDetails(assistantId);
@@ -66,20 +66,20 @@ public class HomeworkAssistantController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<AssistantDevoirResponse>> listAssistants(
+    public ResponseEntity<Page<HomeworkAssistantResponse>> listAssistants(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
         log.info("Liste des assistants - page: {}, size: {}", page, size);
 
         Page<ChildHomeworkAssistant> assistants = assistantService.listAssistants(page, size);
-        Page<AssistantDevoirResponse> response = assistants.map(this::convertToResponse);
+        Page<HomeworkAssistantResponse> response = assistants.map(this::convertToResponse);
 
         return ResponseEntity.ok(response);
     }
 
     @GetMapping("/search")
-    public ResponseEntity<Page<AssistantDevoirResponse>> searchAssistants(
+    public ResponseEntity<Page<HomeworkAssistantResponse>> searchAssistants(
             @RequestParam String keyword,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
@@ -88,7 +88,7 @@ public class HomeworkAssistantController {
 
         Pageable pageable = PageRequest.of(page, size);
         Page<ChildHomeworkAssistant> assistants = assistantService.searchAssistants(keyword, pageable);
-        Page<AssistantDevoirResponse> response = assistants.map(this::convertToResponse);
+        Page<HomeworkAssistantResponse> response = assistants.map(this::convertToResponse);
 
         return ResponseEntity.ok(response);
     }
@@ -127,7 +127,7 @@ public class HomeworkAssistantController {
     }
 
     // Méthodes de conversion
-    private ChildHomeworkAssistant convertToEntity(AssistantDevoirRequest request) {
+    private ChildHomeworkAssistant convertToEntity(HomeworkAssistantRequest request) {
         ChildHomeworkAssistant assistant = new ChildHomeworkAssistant();
         assistant.setUserId(request.getUserId());
         assistant.setType(request.getType());
@@ -138,8 +138,8 @@ public class HomeworkAssistantController {
         return assistant;
     }
 
-    private AssistantDevoirResponse convertToResponse(ChildHomeworkAssistant assistant) {
-        AssistantDevoirResponse response = new AssistantDevoirResponse();
+    private HomeworkAssistantResponse convertToResponse(ChildHomeworkAssistant assistant) {
+        HomeworkAssistantResponse response = new HomeworkAssistantResponse();
         response.setId(assistant.getId());
         response.setUserId(assistant.getUserId());
         response.setType(assistant.getType());
