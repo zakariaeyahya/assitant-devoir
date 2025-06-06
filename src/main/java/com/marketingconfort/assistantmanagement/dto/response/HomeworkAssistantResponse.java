@@ -15,7 +15,7 @@ public class HomeworkAssistantResponse {
     private String type;
     private AssistantStatus status;
     private EducationLevel educationLevel;
-    private Boolean enabled;
+    private Boolean isActive;
     private List<String> supportedInputTypes;
 
     // Métadonnées
