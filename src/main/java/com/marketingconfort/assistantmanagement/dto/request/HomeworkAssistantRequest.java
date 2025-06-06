@@ -22,7 +22,7 @@ public class HomeworkAssistantRequest {
     @NotNull(message = "Le niveau éducatif est requis")
     private EducationLevel educationLevel;
 
-    private Boolean enabled = true;
+    private Boolean isActive = true;  // CHANGER: enabled → isActive
 
     private List<String> supportedInputTypes;
 }

@@ -133,7 +133,7 @@ public class HomeworkAssistantController {
         assistant.setType(request.getType());
         assistant.setStatus(request.getStatus());
         assistant.setEducationLevel(request.getEducationLevel());
-        assistant.setEnabled(request.getEnabled());
+        assistant.setIsActive(request.getIsActive());
         assistant.setSupportedInputTypes(request.getSupportedInputTypes());
         return assistant;
     }
@@ -145,7 +145,7 @@ public class HomeworkAssistantController {
         response.setType(assistant.getType());
         response.setStatus(assistant.getStatus());
         response.setEducationLevel(assistant.getEducationLevel());
-        response.setEnabled(assistant.getEnabled());
+        response.setIsActive(assistant.getIsActive());
         response.setSupportedInputTypes(assistant.getSupportedInputTypes());
         response.setCreatedAt(assistant.getCreatedAt());
         response.setLastUpdated(assistant.getLastUpdated());

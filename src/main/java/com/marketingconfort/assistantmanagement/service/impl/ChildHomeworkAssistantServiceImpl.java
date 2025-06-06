@@ -38,7 +38,7 @@ public class ChildHomeworkAssistantServiceImpl implements ChildHomeworkAssistant
 
         // Valeurs par défaut
         assistant.setStatus(AssistantStatus.ACTIVE);
-        assistant.setEnabled(true);
+        assistant.setIsActive(true);
         assistant.setCreatorId(1L);
         assistant.setLastModifierId(1L);
 
@@ -55,7 +55,7 @@ public class ChildHomeworkAssistantServiceImpl implements ChildHomeworkAssistant
         existing.setType(assistant.getType());
         existing.setStatus(assistant.getStatus());
         existing.setEducationLevel(assistant.getEducationLevel());
-        existing.setEnabled(assistant.getEnabled());
+        existing.setIsActive(assistant.getIsActive()); // Modification ici
         existing.setLastModifierId(1L);
 
         return assistantRepository.save(existing);
